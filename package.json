@@ -1,0 +1,25 @@
+{
+  "name": "react-native-echarts",
+  "version": "1.0.0",
+  "description": "reactnative的echarts组件",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shifeng1993/react-native-echarts"
+  },
+  "keywords": [
+    "react-native-echarts"
+  ],
+  "dependencies": {
+    "prop-types": "15.5.10"
+  },
+  "author": "haise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shifeng1993/react-native-echarts/issues"
+  },
+  "homepage": "https://github.com/shifeng1993/react-native-echarts#readme"
+}
