@@ -1,24 +1,24 @@
-# react-native-echarts
+# react-native-secharts
 一个webview封装的图表组件。基于百度echarts3
 
 ## 安装步骤：
 
 1. 安装依赖
   ```bash
-  yarn add react-native-echarts
+  yarn add react-native-secharts
   ```
   或者
   ```bash
-  npm install react-native-echarts --save
+  npm install react-native-secharts --save
   ```
 2. 修复android release bug
 
-- 将node_modules/react-native-echarts/echarts 文件夹
+- 将node_modules/react-native-secharts/echarts 文件夹
 - 移动至项目 android/app/src/main/assets文件夹下
 
 3. 引用组件
 ```javascript
-import Echarts from 'react-native-echarts';
+import Echarts from 'react-native-secharts';
 ```
 
 4. 使用组件
@@ -49,4 +49,5 @@ $ react-native run-ios  或者 $ react-native run-android
 
 
 ## 历史版本特性
-#### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题◊
+#### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
+#### 1.0.1  修复一下描述问题
