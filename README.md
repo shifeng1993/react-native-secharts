@@ -12,8 +12,9 @@
   npm install react-native-echarts --save
   ```
 2. 修复android release bug
-  将node_modules/react-native-echarts/echarts 文件夹
-  移动至项目 android/app/src/main/assets文件夹下
+
+- 将node_modules/react-native-echarts/echarts 文件夹
+- 移动至项目 android/app/src/main/assets文件夹下
 
 3. 引用组件
 ```javascript
