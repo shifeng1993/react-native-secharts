@@ -1,4 +1,6 @@
 # react-native-secharts
+[![NPM Version](https://img.shields.io/npm/v/native-echarts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
+  [![License](http://img.shields.io/npm/l/native-echarts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
 一个webview封装的图表组件。基于百度echarts3
 
 ## 安装步骤：
