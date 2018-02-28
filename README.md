@@ -1,4 +1,6 @@
 # react-native-secharts
+[![NPM Version](https://img.shields.io/npm/v/native-echarts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
+  [![License](http://img.shields.io/npm/l/native-echarts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
 一个webview封装的图表组件。基于百度echarts3
 
 ## 安装步骤：
@@ -47,7 +49,13 @@ $ react-native run-ios  或者 $ react-native run-android
 | height          | number  | 400                                                     | 画布高度  |
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 
+## 实例方法：
+| 方法名称             | 参数    | 备注 |
+| -------------   | ------- | ------------- |
+| setOption         | option     |  echarts3配置项，请参考echarts3官网  |
+
 
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
 #### 1.0.1  修复一下描述问题
+#### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
