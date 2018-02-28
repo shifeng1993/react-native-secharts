@@ -1,6 +1,6 @@
 # react-native-secharts
 [![NPM Version](https://img.shields.io/npm/v/react-native-secharts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
-  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
+  [![License](http://img.shields.io/npm/l/react-native-secharts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
   
 一个webview封装的图表组件。基于百度echarts3
 
