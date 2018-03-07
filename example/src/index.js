@@ -5,6 +5,9 @@ import echarts from './echarts.min';
 import PropTypes from 'prop-types';
 
 export default class Echarts extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentWillReceiveProps(nextProps) {
     if(nextProps.option !== this.props.option) {
       this.refs.chart.reload();
@@ -27,6 +30,9 @@ export default class Echarts extends Component {
         />
       </View>
     );
+  }
+  setOption = (option) => {
+    this.refs.chart.postMessage(JSON.stringify(option));
   }
 }
 
