@@ -36,18 +36,8 @@ export default class App extends Component {
 
   editOption = () => {
     const newOption = {
-      xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-          type: 'value'
-      },
       series: [{
-          data: [123, 321, 123, 321, 1290, 111, 654],
-          type: 'line',
-          areaStyle: {}
+          data: [123, 321, 123, 321, 1290, 111, 654]
       }]
     };
     this.refs.echarts1.setOption(newOption)
