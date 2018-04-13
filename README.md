@@ -5,6 +5,9 @@
 一个webview封装的图表组件。基于百度echarts4
 
 echarts version 4.0.4
+
+如果要使用echarts3请切换至echarts3分支
+
 ## 安装步骤：
 
 1. 安装依赖
