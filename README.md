@@ -2,7 +2,11 @@
 [![NPM Version](https://img.shields.io/npm/v/react-native-secharts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
   [![License](http://img.shields.io/npm/l/react-native-secharts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
   
-一个webview封装的图表组件。基于百度echarts3
+一个webview封装的图表组件。基于百度echarts4
+
+echarts version 4.0.4
+
+如果要使用echarts3请切换至echarts3分支
 
 ## 安装步骤：
 
@@ -58,5 +62,5 @@ $ react-native run-ios  或者 $ react-native run-android
 
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
-#### 1.0.1  修复一下描述问题
 #### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
+#### 1.2.0  主分支更新至echarts4， 修复不能使用clang系的转译字符问题
