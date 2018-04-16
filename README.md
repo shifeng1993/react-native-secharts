@@ -8,7 +8,7 @@ echarts version 4.0.4
 
 如果要使用echarts3请切换至echarts3分支
 
-## 安装步骤：
+## 安装步骤
 
 1. 安装依赖
   ```bash
@@ -44,7 +44,7 @@ $ yarn
 $ react-native run-ios  或者 $ react-native run-android  
 ```
 
-## props:
+## props
 
 | 属性             | 类型    | 默认值                                                   | 备注 |
 | -------------   | ------- | -------------                                           | ------------- |
@@ -54,23 +54,23 @@ $ react-native run-ios  或者 $ react-native run-android
 | height          | number  | 400                                                     | 画布高度  |
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 
-## 实例方法：
+## 实例方法
 | 方法名称             | 参数    | 备注 |
 | -------------   | ------- | ------------- |
 | setOption         | option     |  echarts3配置项，请参考echarts3官网  |
-
-
-## 新增示例图
-
-#### 柱状图
-![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/1.gif )
-#### 折线图
-![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/2.gif )
-#### 饼状图
-![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/3.gif )
-
 
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
 #### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
 #### 1.2.0  主分支更新至echarts4， 修复不能使用clang系的转译字符问题
+
+## 以下是示例图
+
+#### 柱状图
+![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/1.gif )
+
+#### 折线图
+![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/2.gif )
+
+#### 饼状图
+![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/3.gif )
