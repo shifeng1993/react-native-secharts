@@ -2,7 +2,7 @@
 #
 .DS_Store
 example/
-.image
+image/
 # Xcode
 #
 build/
