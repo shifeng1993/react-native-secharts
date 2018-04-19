@@ -24,7 +24,7 @@ export default class Echarts extends Component {
       this.refs.chart.reload();
     }
   }
-  _onPress = () => {
+  _onPress = (event) => {
     this.props.onPress && this.props.onPress(JSON.parse(event.nativeEvent.data))
   }
   _renderLoading = () => {
