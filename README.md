@@ -32,7 +32,9 @@ import Echarts from 'react-native-secharts';
 ```javascript
 <Echarts option={{}} height={400}/>
 ```
+option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#echarts
 
+官方示例 http://echarts.baidu.com/examples/
 
 ## 使用组件
 
@@ -48,7 +50,7 @@ $ react-native run-ios  或者 $ react-native run-android
 
 | 属性             | 类型    | 默认值                                                   | 备注 |
 | -------------   | ------- | -------------                                           | ------------- |
-| option          | obj     | null                                                    | echarts3配置项，请参考echarts3官网  |
+| option          | obj     | null                                                    | echarts配置项，请参考echarts官网  |
 | backgroundColor | string  | 'rgba(0,0,0,0)'                                         | 图表画布背景色 |
 | width           | number  | 'auto'                                                  | 画布宽度  |
 | height          | number  | 400                                                     | 画布高度  |
@@ -57,7 +59,7 @@ $ react-native run-ios  或者 $ react-native run-android
 ## 实例方法
 | 方法名称             | 参数    | 备注 |
 | -------------   | ------- | ------------- |
-| setOption         | option     |  echarts3配置项，请参考echarts3官网  |
+| setOption         | option     |  echarts配置项，请参考echarts官网  |
 
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
