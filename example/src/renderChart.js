@@ -1,5 +1,3 @@
-import echarts from './echarts.min';
-
 const toString = (obj) => {
   let result = JSON.stringify(obj, function(key, val) {
         if (typeof val === 'function') {
