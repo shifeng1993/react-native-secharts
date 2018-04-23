@@ -25,7 +25,9 @@ echarts version 4.0.4
 mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
 ```
 - 以下是 windows
-
+```bash
+md android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
+```
 
 3. 引用组件
 ```javascript
