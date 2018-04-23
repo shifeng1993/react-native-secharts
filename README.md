@@ -2,7 +2,7 @@
 [![NPM Version](https://img.shields.io/npm/v/react-native-secharts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
   [![License](http://img.shields.io/npm/l/react-native-secharts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
   
-一个webview封装的图表组件。基于百度echarts4，相比native-echarts有渐变色支持，与官网相同用法。
+一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
 echarts version 4.0.4
 
