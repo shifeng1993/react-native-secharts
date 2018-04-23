@@ -19,9 +19,13 @@ echarts version 4.0.4
   npm install react-native-secharts --save
   ```
 2. 修复android release bug
+在项目根目录文件夹下
+- 以下是 mac && linux 
+```bash
+mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
+```
+- 以下是 windows
 
-- 将node_modules/react-native-secharts/main/dist/index.html 文件
-- 移动至项目 android/app/src/main/assets/echarts/ 文件夹下(如果没有对应路径文件，请创建)
 
 3. 引用组件
 ```javascript
