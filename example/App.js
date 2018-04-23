@@ -6,11 +6,18 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import Echarts from './src/index.js';
+import {Echarts, echarts} from 'react-native-secharts';
 
 export default class App extends Component {
   state = {  }
   render() {
+    const l1 = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+        offset: 0,
+        color: '#1a98f8'
+    }, {
+        offset: 1,
+        color: '#ff0000'
+    }])
     const option = {
       xAxis: {
           type: 'category',
@@ -20,6 +27,7 @@ export default class App extends Component {
       yAxis: {
           type: 'value'
       },
+      color: l1,
       series: [{
           data: [820, 932, 901, 934, 1290, 1330, 1320],
           type: 'line',

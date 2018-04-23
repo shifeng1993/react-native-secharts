@@ -4,7 +4,7 @@ import renderChart from './renderChart';
 import echarts from './echarts.min';
 import PropTypes from 'prop-types';
 
-export default class Echarts extends Component {
+class Echarts extends Component {
   constructor(props) {
     super(props);
   }
@@ -36,6 +36,7 @@ export default class Echarts extends Component {
   }
 }
 
+export {Echarts, echarts};
 Echarts.propTypes = {
   option:PropTypes.object,
   backgroundColor: PropTypes.string,
