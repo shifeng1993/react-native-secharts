@@ -19,7 +19,7 @@ echarts version 4.0.4
   npm install react-native-secharts --save
   ```
 2. 修复android release bug
-在项目根目录文件夹下
+- 在项目根目录文件夹下使用命令
 - 以下是 mac && linux 
 ```bash
 mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
