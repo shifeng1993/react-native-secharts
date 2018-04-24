@@ -21,11 +21,29 @@ export default function renderChart(props) {
     document.getElementById('main').style.width = "${width}";
     document.getElementById('main').style.backgroundColor = "${backgroundColor}";
     var myChart = echarts.init(document.getElementById('main'));
+    var outMessage = function(types, payload) {
+      var res = {
+        types: types,
+        payload: payload
+      }
+      window.postMessage(JSON.stringify(res));
+    }
     myChart.setOption(${toString(props.option)});
-    window.document.addEventListener('message', function(e) {
-      var option = JSON.parse(e.data);
-      myChart.setOption(option);
+    window.document.addEventListener('message', async (e) => {
+      var data = JSON.parse(e.data);
+      if(data.types === "SET_OPTION"){
+        myChart.setOption(data.payload);
+      } else if(data.types === "GET_IMAGE") {
+        try{
+          outMessage('GET_IMAGE', 'helo');
+          let base64 = await myChart.getDataURL();
+          outMessage('GET_IMAGE', base64);
+        }catch(e){
+          console.log(e)
+        }
+      }
     });
+
     myChart.on('click', function(params) {
       var seen = [];
       var paramsString = JSON.stringify(params, function(key, val) {

@@ -7,6 +7,9 @@ import PropTypes from 'prop-types';
 class Echarts extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: {}
+    }
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.option !== this.props.option) {
@@ -25,6 +28,7 @@ class Echarts extends Component {
           renderLoading={this.props.renderLoading || (()=><View style={{backgroundColor:this.props.backgroundColor}}/>)} // 设置空View，修复ioswebview闪白
           style={{backgroundColor:this.props.backgroundColor}} // 设置背景色透明，修复android闪白
           scrollEnabled={false}
+          onMessage={this._handleMessage}
           injectedJavaScript={renderChart(this.props)}
           startInLoadingState={false}
           source={source}
@@ -32,9 +36,26 @@ class Echarts extends Component {
       </View>
     );
   }
+  _handleMessage = (e) => this.setState({data:JSON.parse(e.nativeEvent.data)});
+
   setOption = (option) => {
-    this.refs.chart.postMessage(JSON.stringify(option));
+    let data = {
+      types: 'SET_OPTION',
+      payload: option
+    }
+    this.refs.chart.postMessage(JSON.stringify(data));
   }
+  
+  getImage = (callback) => {
+    let data = {
+      types: 'GET_IMAGE',
+      payload: null
+    }
+    this.refs.chart.postMessage(JSON.stringify(data));
+    setTimeout(() => {
+      callback(this.state.data.payload)
+    }, 500);
+  }  
 }
 
 export {Echarts, echarts};
