@@ -31,11 +31,10 @@ export default function renderChart(props) {
     myChart.setOption(${toString(props.option)});
     window.document.addEventListener('message', async (e) => {
       var data = JSON.parse(e.data);
-      if(data.types === "SET_OPTION"){
+      if (data.types === "SET_OPTION") {
         myChart.setOption(data.payload);
-      } else if(data.types === "GET_IMAGE") {
+      } else if (data.types === "GET_IMAGE") {
         try{
-          outMessage('GET_IMAGE', 'helo');
           let base64 = await myChart.getDataURL();
           outMessage('GET_IMAGE', base64);
         }catch(e){
