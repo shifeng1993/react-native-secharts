@@ -6,7 +6,7 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import {Echarts, echarts} from 'react-native-secharts';
+import {Echarts, echarts} from './src/index';
 
 export default class App extends Component {
   state = {  }
@@ -38,6 +38,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <Echarts ref="echarts1" option={option}/>
         <TouchableOpacity onPress={this.editOption} ><Text>点我改变echarts option</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.getImage} ><Text>点我获取echarts image</Text></TouchableOpacity>
       </View>
     );
   }
@@ -49,6 +50,11 @@ export default class App extends Component {
       }]
     };
     this.refs.echarts1.setOption(newOption)
+  }
+  getImage = () => {
+    this.refs.echarts1.getImage((res)=>{
+      console.log(res)
+    })
   }
 }
 const styles = StyleSheet.create({
