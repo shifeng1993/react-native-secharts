@@ -51,7 +51,11 @@ class Echarts extends Component {
     }
     this.refs.chart.postMessage(JSON.stringify(data));
     setTimeout(() => {
-      callback(this.state.data.payload)
+      if(this.state.data.types === 'GET_IMAGE') {
+        callback(this.state.data)
+      } else {
+        callback(null)
+      }
     }, 500);
   }  
 }

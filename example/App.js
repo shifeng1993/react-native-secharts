@@ -16,7 +16,7 @@ export default class App extends Component {
         color: '#1a98f8'
     }, {
         offset: 1,
-        color: '#ff0000'
+        color: '#fff'
     }])
     const option = {
       xAxis: {

@@ -40,19 +40,17 @@ import {Echarts, echarts} from 'react-native-secharts';
 ```javascript
 <Echarts option={{}} height={400}/>
 ```
-option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#echarts
-
-官方示例 http://echarts.baidu.com/examples/
-
-## 使用组件
-
 请看example文件夹中示例代码
+
 运行示例
 ```bash
 $ cd example
 $ yarn
 $ react-native run-ios  或者 $ react-native run-android  
 ```
+option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#echarts
+
+官方示例 http://echarts.baidu.com/examples/
 
 ## props
 
@@ -68,12 +66,15 @@ $ react-native run-ios  或者 $ react-native run-android
 | 方法名称             | 参数    | 备注 |
 | -------------   | ------- | ------------- |
 | setOption         | option     |  echarts配置项，请参考echarts官网  |
+| getImage         | (base64)=>{}     |  返回函数的参数base64，可结合RNFS写入相册  |
+
 
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
 #### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
 #### 1.2.0  主分支更新至echarts4， 修复不能使用clang系的转译字符问题
 #### 1.3.0  新增echarts对象，可以使用对象内对应方法，例如渐变等
+#### 1.3.3  新增获取图片getImage方法 ，使用refs获取组件实例进行使用
 ## 以下是示例图
 
 #### 柱状图
