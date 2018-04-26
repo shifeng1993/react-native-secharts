@@ -1,18 +1,4 @@
-const toString = (obj) => {
-  let result = JSON.stringify(obj, function(key, val) {
-        if (typeof val === 'function') {
-            return `~--demo--~${val}~--demo--~`;
-        }
-        return val;
-    });
-
-    do {
-        result = result.replace('\"~--demo--~', '').replace('~--demo--~\"', '');
-    } while (result.indexOf('~--demo--~') >= 0);
-    result = result.replace(/\\n/g, '').replace(/\\\"/g,"\"");//最后一个replace将release模式中莫名生成的\"转换成"
-    return result;
-}
-export default function renderChart(props) {
+const renderChart = (props) => {
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
   const backgroundColor = props.backgroundColor;
@@ -21,7 +7,7 @@ export default function renderChart(props) {
       document.getElementById('main').style.width = "${width}";
       document.getElementById('main').style.backgroundColor = "${backgroundColor}";
       var myChart = echarts.init(document.getElementById('main'));
-      myChart.setOption(${toString(props.option)});
+      myChart.setOption(${JSON.stringify(props.option)});
       window.document.addEventListener('message', function(e) {
         var req = JSON.parse(e.data);
         switch (req.types) {
@@ -51,3 +37,5 @@ export default function renderChart(props) {
       });
     `
 }
+
+export default renderChart;

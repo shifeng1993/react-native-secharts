@@ -72,9 +72,10 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 ## 历史版本特性
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
 #### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
-#### 1.2.0  主分支更新至echarts4， 修复不能使用clang系的转译字符问题
+#### 1.2.0  主分支更新至echarts4
 #### 1.3.0  新增echarts对象，可以使用对象内对应方法，例如渐变等
 #### 1.3.3  新增获取图片getImage方法 ，使用refs获取组件实例进行使用
+#### 1.3.6  修复了formatter属性不能使用clang系的转译字符，以及被误转为string的问题
 ## 以下是示例图
 
 #### 柱状图
