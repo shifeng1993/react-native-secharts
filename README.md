@@ -68,6 +68,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.3.9  修复formatter属性function被屏蔽的问题。
 #### 1.3.7  修复了flex：1不能显示的问题
 #### 1.3.6  修复了formatter属性不能使用clang系的转译字符，以及被误转为string的问题
 #### 1.3.3  新增获取图片getImage方法 ，使用refs获取组件实例进行使用

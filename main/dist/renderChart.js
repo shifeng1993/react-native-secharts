@@ -1,3 +1,17 @@
+const toString = (obj) => {
+  let result = JSON.stringify(obj, function(key, val) {
+        // 对function进行特殊处理
+        if (typeof val === 'function') {
+            return `~haise~${val}~haise~`;
+        }
+        return val;
+    });
+    // 再进行还原
+    do {
+        result = result.replace('\"~haise~', '').replace('~haise~\"', '').replace(/\\n/g, '').replace(/\\\"/g,"\"");//最后一个replace将release模式中莫名生成的\"转换成"
+    } while (result.indexOf('~haise~') >= 0);
+    return result;
+}
 const renderChart = (props) => {
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
@@ -7,7 +21,7 @@ const renderChart = (props) => {
       document.getElementById('main').style.width = "${width}";
       document.getElementById('main').style.backgroundColor = "${backgroundColor}";
       var myChart = echarts.init(document.getElementById('main'));
-      myChart.setOption(${JSON.stringify(props.option)});
+      myChart.setOption(${toString(props.option)});
       window.document.addEventListener('message', function(e) {
         var req = JSON.parse(e.data);
         switch (req.types) {
