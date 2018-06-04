@@ -4,7 +4,7 @@
   
 一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
-echarts version 4.0.4
+echarts version 4.1.0.rc2
 
 ## 安装步骤
 
@@ -59,6 +59,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | width           | number  | 'auto'                                                  | 画布宽度  |
 | height          | number  | 400                                                     | 画布高度  |
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
+| onPress         | func    | (e)=>{}                                                 | 点击事件  |
 
 ## 实例方法
 | 方法名称             | 参数    | 备注 |
@@ -68,6 +69,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.4.0  更新echarts版本到4.1.0.rc2，修复图表点击事件。
 #### 1.3.9  修复formatter属性function被屏蔽的问题。
 #### 1.3.7  修复了flex：1不能显示的问题
 #### 1.3.6  修复了formatter属性不能使用clang系的转译字符，以及被误转为string的问题

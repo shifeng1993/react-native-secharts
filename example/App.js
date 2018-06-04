@@ -133,7 +133,7 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        <Echarts ref="echarts1" option={option1}/>
+        <Echarts ref="echarts1" option={option1} onPress={this.onPress}/>
         <Echarts ref="echarts2" option={option2} height={100}/>
         <TouchableOpacity onPress={this.editOption} ><Text>点我改变echarts option</Text></TouchableOpacity>
         <TouchableOpacity onPress={this.getImage} ><Text>点我获取echarts image</Text></TouchableOpacity>
@@ -153,6 +153,9 @@ export default class App extends Component {
     this.refs.echarts1.getImage((res)=>{
       console.log(res)
     })
+  }
+  onPress = (e) => {
+    console.log(e)
   }
 }
 const styles = StyleSheet.create({

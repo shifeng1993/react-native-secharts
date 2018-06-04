@@ -19,7 +19,8 @@ class Echarts extends Component {
   }
 
   static defaultProps = {
-    backgroundColor: '#00000000'
+    backgroundColor: '#00000000',
+    onPress:()=> {}
   } 
 
   render() {
@@ -42,7 +43,20 @@ class Echarts extends Component {
     );
   }
 
-  _handleMessage = (e) => this.setState({data:JSON.parse(e.nativeEvent.data)});
+  _handleMessage = (e) => {
+    if (!e) return null;
+    const data = JSON.parse(e.nativeEvent.data)
+    switch (data.types) {
+      case 'ON_PRESS':
+        this.props.onPress(JSON.parse(data.payload))
+        break;
+      case 'GET_IMAGE':
+        this.setState({data})
+        break;
+      default:
+        break;
+    }
+  };
 
   setOption = (option) => {
     let data = {
@@ -74,5 +88,6 @@ Echarts.propTypes = {
   backgroundColor: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
-  renderLoading: PropTypes.func
+  renderLoading: PropTypes.func,
+  onPress: PropTypes.func
 }
