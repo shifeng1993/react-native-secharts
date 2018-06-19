@@ -20,11 +20,11 @@ echarts version 4.1.0.rc2
 - 在项目根目录文件夹下使用命令
 - 以下是 mac && linux 
 ```bash
-mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
+mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 - 以下是 windows
 ```bash
-md android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/
+md android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 
 3. 引用组件
@@ -38,7 +38,9 @@ import {Echarts, echarts} from 'react-native-secharts';
 ```javascript
 <Echarts option={{}} height={400}/>
 ```
-请看example文件夹中示例代码
+请看example文件夹中示例代码  
+
+https://github.com/shifeng1993/react-native-secharts/tree/master/example
 
 运行示例
 ```bash
@@ -60,6 +62,8 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | height          | number  | 400                                                     | 画布高度  |
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 | onPress         | func    | (e)=>{}                                                 | 点击事件  |
+| isMap           | boolen  | false                                                   | 是否为地图  |
+
 
 ## 实例方法
 | 方法名称             | 参数    | 备注 |
@@ -69,6 +73,8 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.4.3  修复设置了echarts地图，其余图表只能显示一个的问题
+#### 1.4.2  修复echarts地图不能显示的问题，目前只支持echarts最新的bmap形式。
 #### 1.4.0  更新echarts版本到4.1.0.rc2，修复图表点击事件。
 #### 1.3.9  修复formatter属性function被屏蔽的问题。
 #### 1.3.7  修复了flex：1不能显示的问题

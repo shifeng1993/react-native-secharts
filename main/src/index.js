@@ -11,7 +11,6 @@ class Echarts extends Component {
       data: {}
     }
   }
-
   componentWillReceiveProps(nextProps) {
     if(nextProps.option !== this.props.option) {
       this.refs.chart.reload();
@@ -20,11 +19,14 @@ class Echarts extends Component {
 
   static defaultProps = {
     backgroundColor: '#00000000',
-    onPress:()=> {}
+    onPress:()=> {},
+    isMap: false
   } 
-
+  
   render() {
-    const source = (Platform.OS == 'ios') ? require('./index.html') : {'uri':'file:///android_asset/echarts/index.html'} // 修复android release路径问题
+    const bmapSource = (Platform.OS == 'ios') ? require('./Bmap.html') : {'uri':'file:///android_asset/echarts/Bmap.html'} // 修复android release路径问题
+    const indexSource = (Platform.OS == 'ios') ? require('./index.html') : {'uri':'file:///android_asset/echarts/index.html'} // 修复android release路径问题
+    let source = this.props.isMap ? bmapSource : indexSource;
     return (
       <View style={{flexDirection: 'row',width: this.props.width}}>
         <View style={{flex:1,height: this.props.height || 400}}>
