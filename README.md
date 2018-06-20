@@ -88,6 +88,9 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 ## 以下是示例图
 
+#### 例子和地图
+![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/4.gif )
+
 #### 柱状图
 ![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/1.gif )
 
