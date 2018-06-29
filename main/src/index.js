@@ -60,20 +60,35 @@ class Echarts extends Component {
     }
   };
 
-  setOption = (option) => {
-    let data = {
-      types: 'SET_OPTION',
-      payload: option
-    }
+  _postMessage(data){
     this.refs.chart.postMessage(JSON.stringify(data));
   }
+
+  setOption = (option,notMerge, lazyUpdate) => {
+    let data = {
+      types: 'SET_OPTION',
+      payload: {
+        option:option,
+        notMerge:notMerge || false,
+        lazyUpdate:lazyUpdate || false
+      }
+    }
+    this._postMessage(data);
+  }
   
+  clear=()=>{
+    let data = {
+      types: 'CLEAR'
+    }
+    this._postMessage(data);
+  }
+
   getImage = (callback) => {
     let data = {
       types: 'GET_IMAGE',
       payload: null
     }
-    this.refs.chart.postMessage(JSON.stringify(data));
+    this._postMessage(data);
     setTimeout(() => {
       if(this.state.data.types === 'GET_IMAGE') {
         callback(this.state.data)
@@ -83,7 +98,7 @@ class Echarts extends Component {
     }, 500);
   }  
 }
-
+ 
 export {Echarts, echarts};
 Echarts.propTypes = {
   option:PropTypes.object,
