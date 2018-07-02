@@ -26,11 +26,14 @@ const renderChart = (props) => {
         var req = JSON.parse(e.data);
         switch (req.types) {
           case "SET_OPTION":
-            myChart.setOption(req.payload);
+            myChart.setOption(req.payload.option,req.payload.notMerge,req.payload.lazyUpate);
             break;
           case "GET_IMAGE":
             var base64 = myChart.getDataURL();
             window.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": base64}));
+            break;
+          case "CLEAR":
+            myChart.clear();
             break;
           default:
             break;
