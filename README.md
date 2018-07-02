@@ -40,7 +40,7 @@ import {Echarts, echarts} from 'react-native-secharts';
 ```
 请看example文件夹中示例代码  
 
-https://github.com/shifeng1993/react-native-secharts/tree/master/example
+链接：https://github.com/shifeng1993/react-native-secharts/tree/master/example
 
 运行示例
 ```bash
@@ -66,13 +66,15 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 实例方法
-| 方法名称             | 参数    | 备注 |
-| -------------   | ------- | ------------- |
-| setOption         | option     |  echarts配置项，请参考echarts官网  |
-| getImage         | (base64)=>{}     |  返回函数的参数base64，可结合RNFS写入相册  |
+| 方法名称         | 参数                            | 备注 |
+| -------------   | -------                        | ------------- |
+| setOption       | (option: Object, notMerge?: boolean, lazyUpdate?: boolean) |  参数参考：http://echarts.baidu.com/api.html#echartsInstance.setOption |
+| getImage        | (base64)=>{}                   |  返回函数的参数base64，可结合RNFS写入相册  |
+| clear           | 无                             |  清空echarts画布  |
 
 
 ## 历史版本特性
+#### 1.4.4  增加echart实例方法setOption的附加参数调用，增加clear实例方法调用
 #### 1.4.3  修复设置了echarts地图，其余图表只能显示一个的问题
 #### 1.4.2  修复echarts地图不能显示的问题，目前只支持echarts最新的bmap形式。
 #### 1.4.0  更新echarts版本到4.1.0.rc2，修复图表点击事件。
