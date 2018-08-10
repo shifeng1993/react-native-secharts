@@ -3645,7 +3645,7 @@ react-native-safe-area-view@^0.8.0:
 
 "react-native-secharts@github:shifeng1993/react-native-secharts#master":
   version "1.4.5"
-  resolved "https://codeload.github.com/shifeng1993/react-native-secharts/tar.gz/6226fa1c605db4009ed0ba5542bff65279da6b8a"
+  resolved "https://codeload.github.com/shifeng1993/react-native-secharts/tar.gz/7d35297afc8c6b60eb22ba08c637dc1c8319a501"
   dependencies:
     prop-types "15.5.10"
 
