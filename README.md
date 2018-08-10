@@ -4,7 +4,7 @@
   
 一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
-echarts version 4.1.0.rc2
+echarts version 4.1.0
 
 ## 安装步骤
 
@@ -74,6 +74,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.4.5  更新echarts版本到4.1.0
 #### 1.4.4  增加echart实例方法setOption的附加参数调用，增加clear实例方法调用
 #### 1.4.3  修复设置了echarts地图，其余图表只能显示一个的问题
 #### 1.4.2  修复echarts地图不能显示的问题，目前只支持echarts最新的bmap形式。

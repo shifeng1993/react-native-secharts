@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "16.2.0",
     "react-native": "0.53.0",
-    "react-native-secharts": "^1.4.4",
+    "react-native-secharts": "github:shifeng1993/react-native-secharts#master",
     "react-navigation": "^2.3.1"
   },
   "devDependencies": {
