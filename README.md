@@ -6,7 +6,7 @@
 
 echarts version 4.1.0
 
-注：react-native 0.56 版本以上，webview改版，https://reactnative.cn/docs/webview/，本组件分为0.56以上（包含）， 0.56以下, 请阅读以下安装步骤。
+注：react-native 0.56 版本以上，webview改版， https://reactnative.cn/docs/webview/ 本组件分为0.56以上（包含）， 0.56以下, 请阅读以下安装步骤。
 
 ## 安装步骤
 
