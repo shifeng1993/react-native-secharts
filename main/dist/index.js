@@ -32,6 +32,7 @@ class Echarts extends Component {
         <View style={{flex:1,height: this.props.height || 400}}>
           <WebView
             ref="chart"
+            originWhitelist={['*']}
             renderLoading={this.props.renderLoading || (()=><View style={{backgroundColor:this.props.backgroundColor}}/>)} // 设置空View，修复ioswebview闪白
             style={{backgroundColor:this.props.backgroundColor}} // 设置背景色透明，修复android闪白
             scrollEnabled={false}
