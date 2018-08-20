@@ -13,32 +13,32 @@ echarts version 4.1.0
 1. 安装依赖
 
 - react-native >= 0.56
-```bash
-yarn add react-native-secharts
-```
-或者
-```bash
-npm install react-native-secharts --save
-```
+  ```bash
+  yarn add react-native-secharts
+  ```
+    或者
+  ```bash
+  npm install react-native-secharts --save
+  ```
 
 - react-native < 0.56
-```bash
-yarn add react-native-secharts@1.4.5
-```
-或者
-```bash
-npm install react-native-secharts@1.4.5 --save
-```
+  ```bash
+  yarn add react-native-secharts@1.4.5
+  ```
+    或者
+  ```bash
+  npm install react-native-secharts@1.4.5 --save
+  ```
 
 2. 修复android release bug
 - 在项目根目录文件夹下使用命令
 - 以下是 mac && linux 
 ```bash
-mkdir android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
+mkdir android/app/src/main/assets && mkdir android/app/src/main/assets/echarts && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 - 以下是 windows
 ```bash
-md android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
+md android/app/src/main/assets && md android/app/src/main/assets/echarts && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 
 3. 引用组件
