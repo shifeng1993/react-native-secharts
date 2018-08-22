@@ -31,14 +31,15 @@ echarts version 4.1.0
   ```
 
 2. 修复android release bug
-- 在项目根目录文件夹下使用命令
+- 在你的项目创建此路径的文件夹 `$yourProject/android/app/src/main/assets/echarts`，
+- 创建完成后请在你的项目根目录（`$yourProject/） 文件夹下使用命令
 - 以下是 mac && linux 
 ```bash
-mkdir android/app/src/main/assets && mkdir android/app/src/main/assets/echarts && cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
+cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && cp node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 - 以下是 windows
 ```bash
-md android/app/src/main/assets && md android/app/src/main/assets/echarts && copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
+copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 
 3. 引用组件
