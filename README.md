@@ -4,7 +4,7 @@
   
 一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
-echarts version 4.1.0
+echarts version 4.2.0-rc.2
 
 注：react-native 0.56 版本以上，webview改版， https://reactnative.cn/docs/webview/ 本组件分为0.56以上（包含）， 0.56以下, 请阅读以下安装步骤。
 
@@ -89,6 +89,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.5.1  修复组件在重绘过程中会刷新webview的闪烁,更新echarts版本到4.2.0-rc.2
 #### 1.5.0  更新组件到支持rn0.56版本，修复ios release出现的不能渲染的bug。
 #### 1.4.5  更新echarts版本到4.1.0
 #### 1.4.4  增加echart实例方法setOption的附加参数调用，增加clear实例方法调用
