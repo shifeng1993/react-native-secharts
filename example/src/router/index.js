@@ -5,11 +5,6 @@ import {
   createStackNavigator
 } from 'react-navigation';
 
-// 引入原生切换动画
-import {
-  forHorizontal
-} from 'react-navigation/src/views/StackView/StackViewStyleInterpolator';
-
 // 引入页面容器
 import {
   IndexPage,
@@ -29,10 +24,7 @@ const AppNavigator = createStackNavigator({
     screen: MapPage,
   }
 }, {
-  initialRouteName: 'Main',
-  transitionConfig: () => ({
-    screenInterpolator: forHorizontal
-  })
+  initialRouteName: 'Main'
 });
 
 export default AppNavigator;
