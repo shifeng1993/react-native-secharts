@@ -21,7 +21,7 @@ class Echarts extends Component {
     backgroundColor: '#00000000',
     onPress: () => {},
     isMap: false,
-		renderMode:'canvas'
+    renderMode:'canvas'
   }
 
   render() {
