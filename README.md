@@ -8,6 +8,13 @@ echarts version 4.2.0-rc.2
 
 注：react-native 0.56 版本以上，webview改版， https://reactnative.cn/docs/webview/ 本组件分为0.56以上（包含）， 0.56以下, 请阅读以下安装步骤。
 
+## 已知bug 和 需要注意的点
+- echarts配置项内所有的函数均无法被`new function()` 或者 `eval()`重新还原为函数, 这个bug只能找到echarts源码内的方法进行修改，后续找到地方会进行修复，请不要在提类似的bug。
+
+- 实例方法setOption不会保存修改后的option，这意味着在react 执行setState操作后重新render，当前state的状态会重新覆盖webview内setOption的状态，所以不推荐使用。
+
+- 目前已经修复组件因为onload发生的闪烁，这以为着可以不用组件setOption的实例方法，直接通过修改当容器组件的绑定的state值，setState操作，然后secharts组件会监听 state中option的改变，来进行option修改。当然组件实例方法setOption还是可以使用的，只是有bug，不推荐而已。
+
 ## 安装步骤
 
 1. 安装依赖
@@ -78,7 +85,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 | onPress         | func    | (e)=>{}                                                 | 点击事件  |
 | isMap           | boolen  | false                                                   | 是否为地图  |
-
+| renderMode      | string  | 'canvas'                                                | echarts渲染是用'canvas' 或'svg'渲染   |
 
 ## 实例方法
 | 方法名称         | 参数                            | 备注 |
@@ -87,8 +94,8 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | getImage        | (base64)=>{}                   |  返回函数的参数base64，可结合RNFS写入相册  |
 | clear           | 无                             |  清空echarts画布  |
 
-
 ## 历史版本特性
+#### 1.5.2  新增了必要的props使用canvas或者svg渲染
 #### 1.5.1  修复组件在重绘过程中会刷新webview的闪烁,更新echarts版本到4.2.0-rc.2
 #### 1.5.0  更新组件到支持rn0.56版本，修复ios release出现的不能渲染的bug。
 #### 1.4.5  更新echarts版本到4.1.0
