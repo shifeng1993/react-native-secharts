@@ -25,7 +25,7 @@ const renderChart = (props) => {
       document.getElementById('main').style.height = "${height}";
       document.getElementById('main').style.width = "${width}";
       document.getElementById('main').style.backgroundColor = "${backgroundColor}";
-      var myChart = echarts.init(document.getElementById('main'),null,{renderer:${renderMode});
+      var myChart = echarts.init(document.getElementById('main'),null,{renderer:${renderMode}});
       myChart.setOption(${toString(props.option)});
       window.document.addEventListener('message', function(e) {
         var req = JSON.parse(e.data);
