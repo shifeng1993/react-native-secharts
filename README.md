@@ -13,7 +13,7 @@ echarts version 4.2.0-rc.2
 
 - 实例方法setOption不会保存修改后的option，这意味着在react 执行setState操作后重新render，当前state的状态会重新覆盖webview内setOption的状态，所以不推荐使用。
 
-- 目前已经修复组件因为onload发生的闪烁，这以为着可以不用组件setOption的实例方法，直接通过修改当容器组件的绑定的state值，setState操作，然后secharts组件会监听 state中option的改变，来进行option修改。当然组件实例方法setOption还是可以使用的，只是有bug，不推荐而已。
+- 目前已经修复组件因为onload发生的闪烁，这意味着可以不用组件setOption的实例方法，直接通过修改当容器组件的绑定的state值，setState操作，然后secharts组件会监听 state中option的改变，来进行option修改。当然组件实例方法setOption还是可以使用的，只是有bug，不推荐而已。
 
 ## 安装步骤
 
