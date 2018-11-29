@@ -16,10 +16,11 @@ const renderChart = (props) => {
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
   const backgroundColor = props.backgroundColor;
-  let renderMode=props.renderMode;
-  if(renderMode!=='canvas'&&renderMode!=='svg'){
-  	renderMode='canvas'
-  	console.error('renderMode must be canvas or svg ,default is canvas')
+  let renderMode = props.renderMode;
+  let renderModes = ['canvas', 'svg']
+  if(renderModes.indexOf(renderMode) === -1){
+  	renderMode='canvas';
+  	console.error('renderMode must be canvas or svg ,default is canvas');
 	}
   return `
       document.getElementById('main').style.height = "${height}";

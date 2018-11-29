@@ -20,7 +20,8 @@ class Echarts extends Component {
   static defaultProps = {
     backgroundColor: '#00000000',
     onPress: () => {},
-    isMap: false
+    isMap: false,
+    renderMode:'canvas'
   }
 
   render() {
@@ -107,5 +108,6 @@ Echarts.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   renderLoading: PropTypes.func,
-  onPress: PropTypes.func
+  onPress: PropTypes.func,
+	renderMode:PropTypes.string
 }
