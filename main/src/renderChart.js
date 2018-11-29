@@ -1,16 +1,16 @@
 const toString = (obj) => {
-  let result = JSON.stringify(obj, function(key, val) {
-        // 对function进行特殊处理
-        if (typeof val === 'function') {
-            return `~ha~${val}~ha~`;
-        }
-        return val;
-    });
-    // 再进行还原
-    do {
-        result = result.replace('\"~ha~', '').replace('~ha~\"', '').replace(/\\n/g, '').replace(/\\\"/g,"\"");//最后一个replace将release模式中莫名生成的\"转换成"
-    } while (result.indexOf('~ha~') >= 0);
-    return result;
+  let result = JSON.stringify(obj, function (key, val) {
+    // 对function进行特殊处理
+    if (typeof val === 'function') {
+      return `~ha~${val}~ha~`;
+    }
+    return val;
+  });
+  // 再进行还原
+  do {
+    result = result.replace('\"~ha~', '').replace('~ha~\"', '').replace(/\\n/g, '').replace(/\\\"/g, "\"");//最后一个replace将release模式中莫名生成的\"转换成"
+  } while (result.indexOf('~ha~') >= 0);
+  return result;
 }
 const renderChart = (props) => {
   const height = `${props.height || 400}px`;
@@ -18,10 +18,10 @@ const renderChart = (props) => {
   const backgroundColor = props.backgroundColor;
   let renderMode = props.renderMode;
   let renderModes = ['canvas', 'svg']
-  if(renderModes.indexOf(renderMode) === -1){
-  	renderMode='canvas';
-  	console.error('renderMode must be canvas or svg ,default is canvas');
-	}
+  if (renderModes.indexOf(renderMode) === -1) {
+    renderMode = 'canvas';
+    console.error('renderMode must be canvas or svg ,default is canvas');
+  }
   return `
       document.getElementById('main').style.height = "${height}";
       document.getElementById('main').style.width = "${width}";

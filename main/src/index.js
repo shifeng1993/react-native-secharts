@@ -12,7 +12,7 @@ class Echarts extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if(nextProps.option !== this.props.option) {
+    if (nextProps.option !== this.props.option) {
       this.setOption(nextProps.option)
     }
   }
@@ -21,7 +21,7 @@ class Echarts extends Component {
     backgroundColor: '#00000000',
     onPress: () => {},
     isMap: false,
-    renderMode:'canvas'
+    renderMode: 'canvas'
   }
 
   render() {
@@ -109,5 +109,5 @@ Echarts.propTypes = {
   height: PropTypes.number,
   renderLoading: PropTypes.func,
   onPress: PropTypes.func,
-	renderMode:PropTypes.string
+  renderMode: PropTypes.string
 }
