@@ -85,7 +85,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 | onPress         | func    | (e)=>{}                                                 | 点击事件  |
 | isMap           | boolen  | false                                                   | 是否为地图  |
-
+| defaultHighlightSeletion           | number  | null                                                   | 默认高亮选中条目  |
 
 ## 实例方法
 | 方法名称         | 参数                            | 备注 |
