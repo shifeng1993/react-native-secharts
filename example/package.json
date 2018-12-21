@@ -11,6 +11,7 @@
     "react-native": "0.57.7",
     "react-native-gesture-handler": "^1.0.10",
     "react-native-secharts": "github:shifeng1993/react-native-secharts#master",
+    "react-native-webview": "^2.14.3",
     "react-navigation": "^3.0.2"
   },
   "devDependencies": {

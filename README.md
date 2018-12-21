@@ -9,6 +9,8 @@ echarts version 4.2.0-rc.2
 注：react-native 0.56 0.57 版本 webview大改，请仔细阅读安装步骤, 1.6.0版本以上（包含）请注意包必须联网才能使用。
 
 ## 已知bug 和 需要注意的点
+- android 模拟器上面渲染会出问题，目前android真机是没有问题的，请不要提类似issues。
+
 - echarts配置项内所有的函数均无法被`new function()` 或者 `eval()`重新还原为函数, 这个bug只能找到echarts源码内的方法进行修改，后续找到地方会进行修复，请不要在提类似的bug。
 
 - 实例方法setOption不会保存修改后的option，这意味着在react 执行setState操作后重新render，当前state的状态会重新覆盖webview内setOption的状态，所以不推荐使用。
