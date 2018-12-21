@@ -6,7 +6,7 @@
 
 echarts version 4.2.0-rc.2
 
-注：react-native 0.56 版本以上，webview改版， https://reactnative.cn/docs/webview/ 本组件分为0.56以上（包含）， 0.56以下, 请阅读以下安装步骤。
+注：react-native 0.56 0.57 版本 webview大改，请仔细阅读安装步骤, 1.6.0版本以上（包含）请注意包必须联网才能使用。
 
 ## 已知bug 和 需要注意的点
 - echarts配置项内所有的函数均无法被`new function()` 或者 `eval()`重新还原为函数, 这个bug只能找到echarts源码内的方法进行修改，后续找到地方会进行修复，请不要在提类似的bug。
@@ -19,13 +19,24 @@ echarts version 4.2.0-rc.2
 
 1. 安装依赖
 
-- react-native >= 0.56
+- react-native > 0.56
   ```bash
-  yarn add react-native-secharts
+  yarn add react-native-secharts react-native-webview
+  react-native link react-native-webview
   ```
     或者
   ```bash
-  npm install react-native-secharts --save
+  npm install react-native-secharts react-native-webview --save
+  react-native link react-native-webview
+  ```
+
+- react-native = 0.56
+  ```bash
+  yarn add react-native-secharts@1.5.3
+  ```
+    或者
+  ```bash
+  npm install react-native-secharts@1.5.3 --save
   ```
 
 - react-native < 0.56
@@ -37,7 +48,7 @@ echarts version 4.2.0-rc.2
   npm install react-native-secharts@1.4.5 --save
   ```
 
-2. 修复android release bug
+2. 修复android release bug （大于0.56的版本不用进行此步骤）
 - 在你的项目创建此路径的文件夹 `$yourProject/android/app/src/main/assets/echarts`，
 - 创建完成后请在你的项目根目录（`$yourProject/） 文件夹下使用命令
 - 以下是 mac && linux 
@@ -96,6 +107,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.6.0  修复0.57版本出现的本地不能渲染的bug。
 #### 1.5.3  修复1.5.2版本出现的不能渲染的bug，使用最新版本rn重写示例。
 #### 1.5.2  新增了必要的props使用canvas或者svg渲染
 #### 1.5.1  修复组件在重绘过程中会刷新webview的闪烁,更新echarts版本到4.2.0-rc.2

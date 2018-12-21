@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {WebView, View, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
+import {WebView} from 'react-native-webview';
 import renderChart from './renderChart';
 import echarts from './echarts.min';
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ class Echarts extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    if(nextProps.option !== this.props.option) {
+    if (nextProps.option !== this.props.option) {
       this.setOption(nextProps.option)
     }
   }
@@ -24,8 +25,10 @@ class Echarts extends Component {
   }
 
   render() {
-    const bmapSource = (Platform.OS == 'ios') ? require('./Bmap.html') : {'uri': 'file:///android_asset/echarts/Bmap.html'} // 修复android release路径问题
-    const indexSource = (Platform.OS == 'ios') ? require('./index.html') : {'uri': 'file:///android_asset/echarts/index.html'} // 修复android release路径问题
+    // const bmapSource = (Platform.OS == 'ios') ? require('./Bmap.html') : {'uri': 'file:///android_asset/echarts/Bmap.html'} // 修复android release路径问题
+    // const indexSource = (Platform.OS == 'ios') ? require('./index.html') : {'uri': 'file:///android_asset/echarts/index.html'} // 修复android release路径问题
+    const bmapSource = {'uri': 'https://www.shifeng1993.com/echarts/Bmap.html'} // 修复0.57问题
+    const indexSource = {'uri': 'https://www.shifeng1993.com/echarts/index.html'} // 修复0.57问题
     let source = this.props.isMap ? bmapSource : indexSource;
     return (
       <View style={{flexDirection: 'row', width: this.props.width}}>
@@ -33,6 +36,7 @@ class Echarts extends Component {
           <WebView
             ref="chart"
             originWhitelist={['*']}
+            useWebKit={true}  // ios使用最新webkit内核渲染
             renderLoading={this.props.renderLoading || (() => <View style={{backgroundColor: this.props.backgroundColor}} />)} // 设置空View，修复ioswebview闪白
             style={{backgroundColor: this.props.backgroundColor}} // 设置背景色透明，修复android闪白
             scrollEnabled={false}
