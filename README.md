@@ -109,6 +109,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.6.1  修复文档错误部分
 #### 1.6.0  修复0.57版本出现的本地不能渲染的bug。
 #### 1.5.3  修复1.5.2版本出现的不能渲染的bug，使用最新版本rn重写示例。
 #### 1.5.2  新增了必要的props使用canvas或者svg渲染

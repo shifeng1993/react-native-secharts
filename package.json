@@ -1,6 +1,6 @@
 {
   "name": "react-native-secharts",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "reactnative的echarts组件",
   "main": "main/dist/index.js",
   "scripts": {
