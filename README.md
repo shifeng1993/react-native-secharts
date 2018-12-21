@@ -6,7 +6,7 @@
 
 echarts version 4.2.0-rc.2
 
-注：react-native 0.56 0.57 版本 webview大改，请仔细阅读安装步骤, 1.6.0版本以上（包含）请注意包必须联网才能使用。
+注：react-native 0.56 和 0.57 版本 webview大改，请仔细阅读安装步骤。
 
 ## 已知bug 和 需要注意的点
 - android 模拟器上面渲染会出问题，目前android真机是没有问题的，请不要提类似issues。
