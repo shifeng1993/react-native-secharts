@@ -50,7 +50,7 @@ echarts version 4.2.0-rc.2
   npm install react-native-secharts@1.4.5 --save
   ```
 
-2. 修复android release bug （大于0.56的版本不用进行此步骤）
+2. 修复android release bug
 - 在你的项目创建此路径的文件夹 `$yourProject/android/app/src/main/assets/echarts`，
 - 创建完成后请在你的项目根目录（`$yourProject/） 文件夹下使用命令
 - 以下是 mac && linux 
