@@ -32,7 +32,7 @@ class Echarts extends Component {
       <View style={{flexDirection: 'row', width: this.props.width}}>
         <View style={{flex: 1, height: this.props.height || 400}}>
           <WebView
-            ref="chart"
+            ref={ref => this.chart = ref}
             originWhitelist={['*']}
             useWebKit={true}  // ios使用最新webkit内核渲染
             renderLoading={this.props.renderLoading || (() => <View style={{backgroundColor: this.props.backgroundColor}} />)} // 设置空View，修复ioswebview闪白
@@ -64,7 +64,7 @@ class Echarts extends Component {
   };
 
   _postMessage(data) {
-    this.refs.chart.postMessage(JSON.stringify(data));
+    this.chart.postMessage(JSON.stringify(data));
   }
 
   setOption = (option, notMerge, lazyUpdate) => {
