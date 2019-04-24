@@ -4,7 +4,7 @@
   
 一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
-echarts version 4.2.0-rc.2
+echarts version 4.2.0-rc.2123
 
 注：react-native 0.56 和 0.57 版本 webview大改，请仔细阅读安装步骤。
 
