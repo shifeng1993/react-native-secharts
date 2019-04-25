@@ -1,4 +1,4 @@
-# react-native-secharts-cbbbbbbbbbbb
+# react-native-secharts-caaaa
 [![NPM Version](https://img.shields.io/npm/v/react-native-secharts.svg?style=flat)](https://www.npmjs.com/package/react-native-secharts)
   [![License](http://img.shields.io/npm/l/react-native-secharts.svg?style=flat)](https://github.com/shifeng1993/react-native-echarts/blob/master/LICENSE)
   
