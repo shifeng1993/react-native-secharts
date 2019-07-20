@@ -15,8 +15,10 @@ class Echarts extends Component {
     this.chartRef = React.createRef();
   }
 
-  static getDerivedStateFromProps(props, state) {
-    state.setOption(props)
+  componentWillReceiveProps(nextProps) {
+    if (this.props.option !== nextProps.option) {
+      state.setOption(nextProps.option)
+    }
   }
 
   static defaultProps = {
