@@ -3,9 +3,9 @@
 .DS_Store
 example/
 main/*
-main/dist/echarts.js
 !main/dist/
 image/
+
 # Xcode
 #
 build/

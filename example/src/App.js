@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
+/*
+ * @Description: 根组件
+ * @Author: shifeng
+ * @Email: shifeng199307@gmail.com
+ * @Date: 2019-07-20 12:21:32
+ */
+
+import React, {Component} from 'react';
 import {
-  Platform,
   StyleSheet,
-  Text,
   View,
-  TouchableOpacity
 } from 'react-native';
-import AppNavigator from './router' 
+import AppNavigator from './router' // app路由导航
 
 export default class App extends Component {
   render() {

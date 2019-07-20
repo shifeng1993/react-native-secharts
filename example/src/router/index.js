@@ -1,11 +1,15 @@
-import React, {
-  Component
-} from 'react';
+/*
+ * @Description: 主路由文件
+ * @Author: shifeng
+ * @Email: shifeng199307@gmail.com
+ * @Date: 2019-07-20 12:22:41
+ */
+
 import {createAppContainer, createStackNavigator, StackViewTransitionConfigs} from 'react-navigation';
+
 // 引入页面容器
 import {
-  IndexPage,
-  MapPage
+  IndexPage,        // 主页面
 } from '../pages';
 
 
@@ -34,9 +38,6 @@ const AppNavigator = createAppContainer(
           header: null,
           gesturesEnabled: false // 左侧滑动返回   ios默认开启，android默认关闭
         }
-      },
-      Map: {
-        screen: MapPage,
       }
     }, {
       initialRouteName: 'Main',
@@ -46,3 +47,4 @@ const AppNavigator = createAppContainer(
 );
 
 export default AppNavigator;
+
