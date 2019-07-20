@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Platform} from 'react-native';
-import {WebView} from 'react-native-webview';
-import {renderChart,toString} from './renderChart';
-import echarts from './echarts.min';
+import {WebView as RNWebView} from 'react-native-webview';
+import renderChart from './utils/renderChart';
+import {toString} from './utils/utils';
+import {index} from './tmp/templates';
+import echarts from './lib/echarts.min';
 import PropTypes from 'prop-types';
 
 class Echarts extends Component {
@@ -14,15 +16,15 @@ class Echarts extends Component {
       isFirstLoad: true,
       setOption: this.setOption
     }
-    
+
   }
 
   static getDerivedStateFromProps(props, state) {
-    if(state.isFirstLoad) {
-        return {
-          isFirstLoad:false
-        }
-    }else {
+    if (state.isFirstLoad) {
+      return {
+        isFirstLoad: false
+      }
+    } else {
       state.setOption(props.option);
       return null
     }
@@ -30,18 +32,14 @@ class Echarts extends Component {
 
   static defaultProps = {
     backgroundColor: '#00000000',
-    onPress: () => {},
-    isMap: false
+    onPress: () => {}
   }
 
   render() {
-    const bmapSource = (Platform.OS == 'ios') ? require('./Bmap.html') : {'uri': 'file:///android_asset/echarts/Bmap.html'} // 修复android release路径问题
-    const indexSource = (Platform.OS == 'ios') ? require('./index.html') : {'uri': 'file:///android_asset/echarts/index.html'} // 修复android release路径问题
-    let source = this.props.isMap ? bmapSource : indexSource;
     return (
       <View style={{flexDirection: 'row', width: this.props.width}}>
         <View style={{flex: 1, height: this.props.height || 400}}>
-          <WebView
+          <RNWebView
             ref={this.chartRef}
             originWhitelist={['*']}
             useWebKit={true}  // ios使用最新webkit内核渲染
@@ -52,7 +50,9 @@ class Echarts extends Component {
             javaScriptEnable={true}
             injectedJavaScript={renderChart(this.props)}
             startInLoadingState={false}
-            source={source}
+            source={{
+              html: index()
+            }}
           />
         </View>
       </View>
@@ -68,7 +68,10 @@ class Echarts extends Component {
         this.props.onPress(JSON.parse(data.payload))
         break;
       case 'GET_IMAGE':
-        this.setState({data})
+        this.setState({data}, () => {
+          console.log(this.state.data)
+          this.emitImg()
+        })
         break;
       default:
         break;
@@ -76,12 +79,13 @@ class Echarts extends Component {
   };
 
 
-  setOption = (option, notMerge =false, lazyUpdate=false) => {
+  setOption = (option, notMerge = false, lazyUpdate = false) => {
     let data = {
       option: option,
       notMerge: notMerge,
       lazyUpdate: lazyUpdate
     }
+    console.log(data)
     const run = `
     // alert('optionsChange')
     myChart.setOption(${toString(data.option)},${data.notMerge.toString()},${data.lazyUpdate.toString()});
@@ -93,29 +97,24 @@ class Echarts extends Component {
     this._postjs(`myChart.clear()`)
   }
 
-  timer = null;
+  emitImg = () => {};
 
   getImage = (callback) => {
-    let data = {
-      types: 'GET_IMAGE',
-      payload: null
-    }
-    
     const run = `
     // alert('getimage')
     var base64 = myChart.getDataURL();
     window.ReactNativeWebView.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": base64}));
     `
     this.chartRef.current.injectJavaScript(run);
-
-    this.timer = setTimeout(() => {
-      if (this.state.data.types === 'GET_IMAGE') {
-        let res  = !this.state.data.payload? null: this.state.data.payload;
-        callback(this.state.data.payload)
+    let self = this;
+    this.emitImg = function () {
+      if (self.state.data.types === 'GET_IMAGE') {
+        let res = !self.state.data.payload ? null : self.state.data.payload;
+        callback(res)
       } else {
         callback(null)
       }
-    }, 500);
+    };
   }
 
   componentWillUnmount() {
