@@ -6,7 +6,7 @@
 
 echarts version 4.2.1
 
-注：react-native 0.56 和 0.57 版本 webview大改，请仔细阅读安装步骤。
+注：react-native 最近几个版本 webview 改动频繁，请仔细阅读安装步骤。
 
 ## 已知bug 和 需要注意的点
 - android 模拟器上面渲染会出问题，目前android真机是没有问题的，请不要提类似issues。
@@ -22,17 +22,18 @@ echarts version 4.2.1
 1. 安装依赖
 
 - react-native >= 0.60.2
+  
   ```bash
   yarn add react-native-secharts react-native-webview@androidx
-  react-native link react-native-webview
   ```
     或者
   ```bash
   npm install react-native-secharts react-native-webview@androidx --save
-  react-native link react-native-webview
   ```
-  安装完成后在`android/gradle.properties`文件添加2行配置，确保在项目中启用AndroidX ：
+  安装完成后在`android/gradle.properties`文件添加2行配置，确保在项目中启用AndroidX
 
+  注：0.60+采用自动link 安装后不需要进行link
+  
   ```
   android.useAndroidX=true
   android.enableJetifier=true

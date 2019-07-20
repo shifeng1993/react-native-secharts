@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 // 递归删除
 function rmdir(dirname, callback) {
@@ -112,6 +113,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),    // 配置出口文件的目录
     filename: '[name].min.js'                     // 配置出口文件的名称
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        test: /\.js(\?.*)?$/i,
+      })
+    ]
   }
 }
 
