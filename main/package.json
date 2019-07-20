@@ -1,17 +1,15 @@
 {
-  "name": "gulp-echarts",
+  "name": "webpack-bundle-echarts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.conf.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0"
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
   }
 }

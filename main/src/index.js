@@ -9,13 +9,14 @@ class Echarts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
+      setOption: this.setOption
     }
+    this.chartRef = React.createRef();
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.option !== this.props.option) {
-      this.setOption(nextProps.option)
-    }
+
+  static getDerivedStateFromProps(props, state) {
+    state.setOption(props)
   }
 
   static defaultProps = {
@@ -32,7 +33,7 @@ class Echarts extends Component {
       <View style={{flexDirection: 'row', width: this.props.width}}>
         <View style={{flex: 1, height: this.props.height || 400}}>
           <WebView
-            ref="chart"
+            ref={this.chartRef}
             originWhitelist={['*']}
             useWebKit={true}  // ios使用最新webkit内核渲染
             renderLoading={this.props.renderLoading || (() => <View style={{backgroundColor: this.props.backgroundColor}} />)} // 设置空View，修复ioswebview闪白
@@ -64,7 +65,7 @@ class Echarts extends Component {
   };
 
   _postMessage(data) {
-    this.refs.chart.postMessage(JSON.stringify(data));
+    this.chartRef.current.postMessage(JSON.stringify(data));
   }
 
   setOption = (option, notMerge, lazyUpdate) => {
@@ -86,13 +87,15 @@ class Echarts extends Component {
     this._postMessage(data);
   }
 
+  timer = null;
+
   getImage = (callback) => {
     let data = {
       types: 'GET_IMAGE',
       payload: null
     }
     this._postMessage(data);
-    setTimeout(() => {
+    this.timer = setTimeout(() => {
       if (this.state.data.types === 'GET_IMAGE') {
         callback(this.state.data)
       } else {
@@ -100,6 +103,11 @@ class Echarts extends Component {
       }
     }, 500);
   }
+
+  componentWillUnmount() {
+    !!this.timer && clearTimeout(this.timer);
+  }
+
 }
 
 export {Echarts, echarts};

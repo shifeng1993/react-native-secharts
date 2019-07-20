@@ -4,7 +4,7 @@
   
 一个webview封装的图表组件。基于百度echarts4，相比native-echarts有echarts自带对象支持，例如渐变色等，用法与官网相同用法。
 
-echarts version 4.2.0-rc.2
+echarts version 4.2.1
 
 注：react-native 0.56 和 0.57 版本 webview大改，请仔细阅读安装步骤。
 
@@ -21,14 +21,30 @@ echarts version 4.2.0-rc.2
 
 1. 安装依赖
 
-- react-native > 0.56
+- react-native >= 0.60.2
+  ```bash
+  yarn add react-native-secharts react-native-webview@androidx
+  react-native link react-native-webview
+  ```
+    或者
+  ```bash
+  npm install react-native-secharts react-native-webview@androidx --save
+  react-native link react-native-webview
+  ```
+  安装完成后在`android/gradle.properties`文件添加2行配置，确保在项目中启用AndroidX ：
+
+  ```
+  android.useAndroidX=true
+  android.enableJetifier=true
+  ```
+- react-native >= 0.57 && react-native > 0.60.2
   ```bash
   yarn add react-native-secharts react-native-webview
   react-native link react-native-webview
   ```
     或者
   ```bash
-  npm install react-native-secharts react-native-webview --save
+  npm install react-native-secharts@1.6.1 react-native-webview --save
   react-native link react-native-webview
   ```
 
@@ -109,6 +125,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
+#### 1.7.0  修复bug，增加适配androidx，更新echarts版本到4.2.1
 #### 1.6.1  修复文档错误部分
 #### 1.6.0  修复0.57版本出现的本地不能渲染的bug。
 #### 1.5.3  修复1.5.2版本出现的不能渲染的bug，使用最新版本rn重写示例。
