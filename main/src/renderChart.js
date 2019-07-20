@@ -12,6 +12,7 @@ const toString = (obj) => {
     } while (result.indexOf('~ha~') >= 0);
     return result;
 }
+
 const renderChart = (props) => {
   const height = `${props.height || 400}px`;
   const width = props.width ? `${props.width}px` : 'auto';
@@ -20,25 +21,11 @@ const renderChart = (props) => {
       document.getElementById('main').style.height = "${height}";
       document.getElementById('main').style.width = "${width}";
       document.getElementById('main').style.backgroundColor = "${backgroundColor}";
+      setTimeout(function(){ 
+        window.ReactNativeWebView.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": ""}))
+      }, 2000)
       var myChart = echarts.init(document.getElementById('main'));
       myChart.setOption(${toString(props.option)});
-      window.document.addEventListener('message', function(e) {
-        var req = JSON.parse(e.data);
-        switch (req.types) {
-          case "SET_OPTION":
-            myChart.setOption(req.payload.option,req.payload.notMerge,req.payload.lazyUpate);
-            break;
-          case "GET_IMAGE":
-            var base64 = myChart.getDataURL();
-            window.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": base64}));
-            break;
-          case "CLEAR":
-            myChart.clear();
-            break;
-          default:
-            break;
-        }
-      });
       myChart.on('click', function(params) {
         var seen = [];
         var paramsString = JSON.stringify(params, function(key, val) {
@@ -50,9 +37,12 @@ const renderChart = (props) => {
           }
           return val;
         });
-        window.postMessage(JSON.stringify({"types":"ON_PRESS","payload": paramsString}));
+        window.ReactNativeWebView.postMessage(JSON.stringify({"types":"ON_PRESS","payload": paramsString}));
       });
     `
 }
 
-export default renderChart;
+export {
+  renderChart,
+  toString
+};

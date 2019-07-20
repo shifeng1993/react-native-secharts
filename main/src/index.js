@@ -1,23 +1,30 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Platform} from 'react-native';
 import {WebView} from 'react-native-webview';
-import renderChart from './renderChart';
+import {renderChart,toString} from './renderChart';
 import echarts from './echarts.min';
 import PropTypes from 'prop-types';
 
 class Echarts extends Component {
   constructor(props) {
     super(props);
+    this.chartRef = React.createRef();
     this.state = {
       data: {},
+      isFirstLoad: true,
       setOption: this.setOption
     }
-    this.chartRef = React.createRef();
+    
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.option !== nextProps.option) {
-      state.setOption(nextProps.option)
+  static getDerivedStateFromProps(props, state) {
+    if(state.isFirstLoad) {
+        return {
+          isFirstLoad:false
+        }
+    }else {
+      state.setOption(props.option);
+      return null
     }
   }
 
@@ -42,6 +49,7 @@ class Echarts extends Component {
             style={{backgroundColor: this.props.backgroundColor}} // 设置背景色透明，修复android闪白
             scrollEnabled={false}
             onMessage={this._handleMessage}
+            javaScriptEnable={true}
             injectedJavaScript={renderChart(this.props)}
             startInLoadingState={false}
             source={source}
@@ -51,9 +59,10 @@ class Echarts extends Component {
     );
   }
 
-  _handleMessage = (e) => {
-    if (!e) return null;
-    const data = JSON.parse(e.nativeEvent.data)
+  _handleMessage = (event) => {
+    event.persist()
+    if (!event) return null;
+    const data = JSON.parse(event.nativeEvent.data)
     switch (data.types) {
       case 'ON_PRESS':
         this.props.onPress(JSON.parse(data.payload))
@@ -66,27 +75,22 @@ class Echarts extends Component {
     }
   };
 
-  _postMessage(data) {
-    this.chartRef.current.postMessage(JSON.stringify(data));
-  }
 
-  setOption = (option, notMerge, lazyUpdate) => {
+  setOption = (option, notMerge =false, lazyUpdate=false) => {
     let data = {
-      types: 'SET_OPTION',
-      payload: {
-        option: option,
-        notMerge: notMerge || false,
-        lazyUpdate: lazyUpdate || false
-      }
+      option: option,
+      notMerge: notMerge,
+      lazyUpdate: lazyUpdate
     }
-    this._postMessage(data);
+    const run = `
+    // alert('optionsChange')
+    myChart.setOption(${toString(data.option)},${data.notMerge.toString()},${data.lazyUpdate.toString()});
+    `
+    this.chartRef.current.injectJavaScript(run);
   }
 
   clear = () => {
-    let data = {
-      types: 'CLEAR'
-    }
-    this._postMessage(data);
+    this._postjs(`myChart.clear()`)
   }
 
   timer = null;
@@ -96,10 +100,18 @@ class Echarts extends Component {
       types: 'GET_IMAGE',
       payload: null
     }
-    this._postMessage(data);
+    
+    const run = `
+    // alert('getimage')
+    var base64 = myChart.getDataURL();
+    window.ReactNativeWebView.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": base64}));
+    `
+    this.chartRef.current.injectJavaScript(run);
+
     this.timer = setTimeout(() => {
       if (this.state.data.types === 'GET_IMAGE') {
-        callback(this.state.data)
+        let res  = !this.state.data.payload? null: this.state.data.payload;
+        callback(this.state.data.payload)
       } else {
         callback(null)
       }
