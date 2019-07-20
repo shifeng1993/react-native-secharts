@@ -8,9 +8,6 @@ const renderChart = (props) => {
       document.getElementById('main').style.height = "${height}";
       document.getElementById('main').style.width = "${width}";
       document.getElementById('main').style.backgroundColor = "${backgroundColor}";
-      setTimeout(function(){ 
-        window.ReactNativeWebView.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": ""}))
-      }, 2000)
       var myChart = echarts.init(document.getElementById('main'));
       myChart.setOption(${toString(props.option)});
       myChart.on('click', function(params) {

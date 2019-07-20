@@ -68,6 +68,7 @@ echarts version 4.2.1
   ```
 
 2. 修复android release bug
+- 组件版本`1.7.0`以上（包含），不需要此步骤，请跳过
 - 在你的项目创建此路径的文件夹 `$yourProject/android/app/src/main/assets/echarts`，
 - 创建完成后请在你的项目根目录（`$yourProject/） 文件夹下使用命令
 - 以下是 mac && linux 
@@ -114,7 +115,6 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 | height          | number  | 400                                                     | 画布高度  |
 | renderLoading   | func    | ()=><View style={{backgroundColor: 'rgba(0,0,0,0)'}}/>  | loading时遮罩  |
 | onPress         | func    | (e)=>{}                                                 | 点击事件  |
-| isMap           | boolen  | false                                                   | 是否为地图  |
 
 
 ## 实例方法
@@ -126,7 +126,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
-#### 1.7.0  修复bug，增加适配androidx，更新echarts版本到4.2.1
+#### 1.7.0  修复bug，增加适配androidx，更新echarts版本到4.2.1，去掉isMap属性
 #### 1.6.1  修复文档错误部分
 #### 1.6.0  修复0.57版本出现的本地不能渲染的bug。
 #### 1.5.3  修复1.5.2版本出现的不能渲染的bug，使用最新版本rn重写示例。
@@ -149,9 +149,6 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 以下是示例图
-
-#### 例子和地图
-![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/4.gif )
 
 #### 柱状图
 ![image](https://github.com/shifeng1993/react-native-echarts/blob/master/image/1.gif )

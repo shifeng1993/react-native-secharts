@@ -43,14 +43,18 @@ class Echarts extends Component {
             ref={this.chartRef}
             originWhitelist={['*']}
             useWebKit={true}  // ios使用最新webkit内核渲染
+            allowUniversalAccessFromFileURLs={true}
+            geolocationEnabled={true}
+            mixedContentMode={'always'}
             renderLoading={this.props.renderLoading || (() => <View style={{backgroundColor: this.props.backgroundColor}} />)} // 设置空View，修复ioswebview闪白
             style={{backgroundColor: this.props.backgroundColor}} // 设置背景色透明，修复android闪白
             scrollEnabled={false}
             onMessage={this._handleMessage}
-            javaScriptEnable={true}
+            javaScriptEnabled={true}
             injectedJavaScript={renderChart(this.props)}
             startInLoadingState={false}
             source={{
+              baseUrl: '',
               html: index()
             }}
           />
@@ -85,16 +89,20 @@ class Echarts extends Component {
       notMerge: notMerge,
       lazyUpdate: lazyUpdate
     }
-    console.log(data)
     const run = `
     // alert('optionsChange')
+    var myChart = echarts.init(document.getElementById('main'));
     myChart.setOption(${toString(data.option)},${data.notMerge.toString()},${data.lazyUpdate.toString()});
     `
     this.chartRef.current.injectJavaScript(run);
   }
 
   clear = () => {
-    this._postjs(`myChart.clear()`)
+    const run = `
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.clear()
+    `
+    this.chartRef.current.injectJavaScript(run);
   }
 
   emitImg = () => {};
@@ -102,6 +110,7 @@ class Echarts extends Component {
   getImage = (callback) => {
     const run = `
     // alert('getimage')
+    var myChart = echarts.init(document.getElementById('main'));
     var base64 = myChart.getDataURL();
     window.ReactNativeWebView.postMessage(JSON.stringify({"types":"GET_IMAGE","payload": base64}));
     `

@@ -25,12 +25,7 @@ gulp.task('index', function () {
     .pipe(gulp.dest('dist/')); //输出
 });
 
-// 清空之前缓存
-gulp.task('clean', function (cb) {
-  del(['dist/*'], cb);
-});
-
 //默认执行任务
-gulp.task('default', gulp.series(gulp.parallel('clean', 'index', 'echarts', 'tmp', 'utils'), function () {
-  gulp.start('index', 'echarts', 'tmp', 'utils');
-})); 
+gulp.task('default', gulp.series(gulp.parallel('index', 'echarts', 'tmp', 'utils')), function (done) {
+  done();
+});
