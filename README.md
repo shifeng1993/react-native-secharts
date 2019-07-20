@@ -38,7 +38,7 @@ echarts version 4.2.1
   android.useAndroidX=true
   android.enableJetifier=true
   ```
-- react-native >= 0.57 && react-native > 0.60.2
+- react-native >= 0.57 && react-native < 0.60.2
   ```bash
   yarn add react-native-secharts react-native-webview
   react-native link react-native-webview
