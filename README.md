@@ -8,15 +8,6 @@ echarts version 4.2.1
 
 注：react-native 最近几个版本 webview 改动频繁，请仔细阅读安装步骤。
 
-## 已知bug 和 需要注意的点
-- android 模拟器上面渲染会出问题，目前android真机是没有问题的，请不要提类似issues。
-
-- echarts配置项内所有的函数均无法被`new function()` 或者 `eval()`重新还原为函数, 这个bug只能找到echarts源码内的方法进行修改，后续找到地方会进行修复，请不要在提类似的bug。
-
-- 实例方法setOption不会保存修改后的option，这意味着在react 执行setState操作后重新render，当前state的状态会重新覆盖webview内setOption的状态，所以不推荐使用。
-
-- 目前已经修复组件因为onload发生的闪烁，这意味着可以不用组件setOption的实例方法，直接通过修改当容器组件的绑定的state值，setState操作，然后secharts组件会监听 state中option的改变，来进行option修改。当然组件实例方法setOption还是可以使用的，只是有bug，不推荐而已。
-
 ## 安装步骤
 
 1. 安装依赖
@@ -126,7 +117,7 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 
 
 ## 历史版本特性
-#### 1.7.0  修复bug，增加适配androidx，更新echarts版本到4.2.1，去掉isMap属性
+#### 1.7.0  修复已知未知bug，增加适配androidx，更新echarts版本到4.2.1，去掉isMap属性
 #### 1.6.1  修复文档错误部分
 #### 1.6.0  修复0.57版本出现的本地不能渲染的bug。
 #### 1.5.3  修复1.5.2版本出现的不能渲染的bug，使用最新版本rn重写示例。
@@ -147,6 +138,74 @@ option具体配置请参考echarts官网api http://echarts.baidu.com/api.html#ec
 #### 1.1.0  新增刷新option方法 ，使用refs获取组件实例进行使用
 #### 1.0.0  上传基础组件，基于echarts3封装，修复了ios android闪白，ios默认移动适配，以及android release路径问题
 
+
+## 已知bug 和 需要注意的点
+### bug
+- echarts配置项内所有的函数均无法被`new function()` 或者 `eval()`重新还原为函数, 这个bug只能找到echarts源码内的方法进行修改，后续找到地方会进行修复，请不要在提类似的bug。
+
+### 注意
+- 实例方法setOption不会保存修改后的option，这意味着在react 执行setState操作后重新render，当前state的状态会重新覆盖webview内setOption的状态，所以不推荐使用。
+
+- 目前已经修复组件因为onload发生的闪烁，这意味着可以不用组件setOption的实例方法，直接通过修改当容器组件的绑定的state值，setState操作，然后secharts组件会监听 state中option的改变，来进行option修改。当然组件实例方法setOption还是可以使用的，只是有bug，不推荐而已。
+```jsx
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: '',
+      option1: {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        color: l1,
+        series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line',
+          areaStyle: {}
+        }]
+      },
+      flag: false  // 这个布尔值是为了测试option1在setstate操作后不会被重置成初始状态。
+    }
+    this.echart1 = React.createRef();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View><Echarts ref={this.echart1} option={this.state.option1} onPress={this.onPress} height={300} /></View>
+        <View style={{padding: 20, alignItems: "center"}}><Text>{`当前state内状态: falg = ${this.state.flag.toString()}`}</Text></View>
+        <TouchableOpacity onPress={this.editOption}>
+          <Text>点我改变echarts option</Text>
+        </TouchableOpacity>
+        <Text numberOfLines={1}>{!this.state.image ? '这里显示base64格式的img字符串' : this.state.image}</Text>
+        <TouchableOpacity onPress={this.getImage}>
+          <Text>点我获取echarts image</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.setState({flag: !this.state.flag})}>
+          <Text>点我测试option 改变后进行setState</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  editOption = () => {
+-    this.echart1.current.setOption({    
++    this.setState({
+      option1: {
+        ...this.state.option1,
+        series: [
+          {
+            data: [Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100]
+          }
+        ]
+      }
+    })
+  }
+```
 
 ## 以下是示例图
 
