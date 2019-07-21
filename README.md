@@ -6,7 +6,7 @@
 
 echarts version 4.2.1
 
-注：react-native 最近几个版本 webview 改动频繁，请仔细阅读安装步骤。
+注：react-native 最近几个版本 webview 包改动频繁，安装时请注意需要固定webview的版本，要不然会出现web与react-native通信的问题，导致api无反应，请仔细阅读安装步骤。
 
 ## 安装步骤
 
