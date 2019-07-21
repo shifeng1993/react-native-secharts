@@ -29,7 +29,7 @@ echarts version 4.2.1
   ```
 - react-native >= 0.57 && react-native < 0.60.2
   ```bash
-  yarn add react-native-secharts@1.6.1 react-native-webview@@2.14.3
+  yarn add react-native-secharts@1.6.1 react-native-webview@2.14.3
   react-native link react-native-webview
   ```
     或者
