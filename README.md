@@ -10,10 +10,8 @@ echarts version 4.2.1
 
 ## 安装步骤
 
-1. 安装依赖
-
+### 1. 安装依赖
 - react-native >= 0.60.2
-  
   ```bash
   yarn add react-native-secharts react-native-webview@androidx
   ```
@@ -31,12 +29,12 @@ echarts version 4.2.1
   ```
 - react-native >= 0.57 && react-native < 0.60.2
   ```bash
-  yarn add react-native-secharts react-native-webview
+  yarn add react-native-secharts@1.6.1 react-native-webview@@2.14.3
   react-native link react-native-webview
   ```
     或者
   ```bash
-  npm install react-native-secharts@1.6.1 react-native-webview --save
+  npm install react-native-secharts@1.6.1 react-native-webview@2.14.3 --save
   react-native link react-native-webview
   ```
 
@@ -58,8 +56,8 @@ echarts version 4.2.1
   npm install react-native-secharts@1.4.5 --save
   ```
 
-2. 修复android release bug
-- 组件版本`1.7.0`以上（包含），不需要此步骤，请跳过
+### 2. 修复android release bug
+- 组件版本`1.7.0`以上（包含），不需要此步骤，请跳至`步骤3. 引用组件`
 - 在你的项目创建此路径的文件夹 `$yourProject/android/app/src/main/assets/echarts`，
 - 创建完成后请在你的项目根目录（`$yourProject/） 文件夹下使用命令
 - 以下是 mac && linux 
@@ -71,14 +69,14 @@ cp node_modules/react-native-secharts/main/dist/index.html android/app/src/main/
 copy node_modules/react-native-secharts/main/dist/index.html android/app/src/main/assets/echarts/ && copy node_modules/react-native-secharts/main/dist/Bmap.html android/app/src/main/assets/echarts/
 ```
 
-3. 引用组件
+### 3. 引用组件
 ```javascript
 import {Echarts, echarts} from 'react-native-secharts';
 ```
 - 大写开头的`Echarts`是组件
 - 小写开头的`echarts`是echarts对象
 
-4. 使用组件
+### 4. 使用组件
 ```javascript
 <Echarts option={{}} height={400}/>
 ```
