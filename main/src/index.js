@@ -64,7 +64,7 @@ class Echarts extends Component {
   }
 
   _handleMessage = (event) => {
-    event.persist()
+    //event.persist()
     if (!event) return null;
     const data = JSON.parse(event.nativeEvent.data)
     switch (data.types) {
